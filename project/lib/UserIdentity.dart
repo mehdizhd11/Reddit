@@ -15,12 +15,15 @@ class UserIdentity extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            //** Reddit icon black and white **/
             Image.asset(
               "assets/images/logo.png" ,
               width: 150,
               height: 150,
             ),
+            //! set distance between children **/
             SizedBox(height: 20,),
+            //?? Text Welcome
             Text('Welcome to Reddit', 
               style: TextStyle(
                 color: Colors.white,
@@ -29,6 +32,7 @@ class UserIdentity extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
+            //** Sign in Button */
             Container(
               width: 150,
               height: 40,
@@ -48,6 +52,7 @@ class UserIdentity extends StatelessWidget {
               )
             ),
             SizedBox(height: 20),
+            //?? Sign Up Button *//
             Container(
               width: 150,
               height: 40,

@@ -7,6 +7,8 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
+//* Splash Screen for s and SignUp/SignIn page show **/
+
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {

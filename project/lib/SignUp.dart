@@ -8,8 +8,9 @@ class SignUp extends StatefulWidget {
   State<StatefulWidget> createState() => SignUpState();
 }
 
+//** Sign Up Page Fo first time user */
 class SignUpState extends State<SignUp> {
-  bool show = false;
+  bool show = true; //** password visiblity */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +28,7 @@ class SignUpState extends State<SignUp> {
               SizedBox(
                 height: 30,
               ),
-              Container(
+              Container( //*************** Input Email @gmail.com from user */
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
                 child: TextField(
                   style: TextStyle(
@@ -59,7 +60,7 @@ class SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              Container(
+              Container( //&& Input UserNAme From client **/
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
                 child: TextField(
                   style: TextStyle(
@@ -91,9 +92,10 @@ class SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              Container(
+              Container(    //** PassWord set Client */
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 0),
                 child: TextField(
+                  obscureText: show,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,
@@ -105,9 +107,15 @@ class SignUpState extends State<SignUp> {
                   decoration: InputDecoration(
                     suffixIcon: Container(
                       margin: EdgeInsets.only(right: 20),
-                      child: IconButton(
-                        onPressed: () {show = !show;},
-                        icon: Icon(show ? Icons.visibility_off : Icons.visibility),
+                      child: IconButton( //&& Password Visiblity **/
+                        onPressed: () {
+                          setState(() {
+                            show = !show;
+                          });
+                        },
+                        icon: Icon(
+                            show ? Icons.visibility : Icons.visibility_off),
+                        color: Colors.black,
                       ),
                     ),
                     filled: true,

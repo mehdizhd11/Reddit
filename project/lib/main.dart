@@ -5,6 +5,7 @@ void main() {
   runApp(const MyApp());
 }
 
+//* Run App and Splash Screen will show */
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -12,7 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // theme: ThemeData(primarySwatch: Color.fromARGB(255, 0, 0, 0)),
       home: SplashScreen(),
     );
   }

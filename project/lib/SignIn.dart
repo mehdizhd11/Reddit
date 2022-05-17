@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatefulWidget {
-  SignUp({Key? key}) : super(key: key);
+class SignIn extends StatefulWidget {
+  SignIn({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => SignUpState();
+  State<StatefulWidget> createState() => SignInState();
 }
 
-//** Sign Up Page Fo first time user */
-class SignUpState extends State<SignUp> {
+//** Sign In Page For Client ******/
+
+class SignInState extends State<SignIn> {
   bool showPass = true; //** password visiblity */
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,8 @@ class SignUpState extends State<SignUp> {
                 width: 150,
                 height: 150,
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Container( //*************** Input Email @gmail.com from user */
+              SizedBox(height: 30,),              
+              Container(  //&& &&&&Input UserName From client **************/
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
                 child: TextField(
                   style: TextStyle(
@@ -37,39 +36,6 @@ class SignUpState extends State<SignUp> {
                     fontFamily: 'GoogleSans-Medium',
                     fontWeight: FontWeight.bold,
                   ),
-                  // textAlign: TextAlign.center,
-                  cursorColor: Colors.black,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.orange,
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        borderSide: BorderSide(
-                          color: Colors.orange,
-                        )),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.orange)),
-                    hintText: 'Email',
-                    hintStyle: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontFamily: 'GoogleSans-Medium',
-                      fontWeight: FontWeight.bold,
-                    ),
-                    contentPadding: EdgeInsets.all(25),
-                  ),
-                ),
-              ),
-              Container( //&& Input UserNAme From client **/
-                margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
-                child: TextField(
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontFamily: 'GoogleSans-Medium',
-                    fontWeight: FontWeight.bold,
-                  ),
-                  // textAlign: TextAlign.center,
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
                     filled: true,
@@ -92,7 +58,7 @@ class SignUpState extends State<SignUp> {
                   ),
                 ),
               ),
-              Container(    //** PassWord set Client */
+              Container(    //*****&&&&& PassWord set Client *****/
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 0),
                 child: TextField(
                   obscureText: showPass,

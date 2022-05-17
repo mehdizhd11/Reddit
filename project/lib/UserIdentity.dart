@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/SignIn.dart';
 import 'package:project/SignUp.dart';
 import 'SplashScreen.dart';
 
@@ -32,13 +33,19 @@ class UserIdentity extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
-            //** Sign in Button */
+            //****** Sign in Button */
             Container(
               width: 150,
               height: 40,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.orange),
-                onPressed: () {},
+                onPressed: () { //** Go To Sign In Page */
+                  Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => SignIn(),
+                    ),
+                  );
+                },
                 child: Text(
                   'Sign in',
                   style: TextStyle(
@@ -52,13 +59,13 @@ class UserIdentity extends StatelessWidget {
               )
             ),
             SizedBox(height: 20),
-            //?? Sign Up Button *//
+            //**** Sign Up Button *//
             Container(
               width: 150,
               height: 40,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.orange),
-                onPressed: () {
+                onPressed: () { //&& Go To Sign Up Page //
                   Navigator.push(context,
                     MaterialPageRoute(
                       builder: (context) => SignUp(),

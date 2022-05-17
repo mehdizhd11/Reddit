@@ -1,65 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project/AddPost.dart';
-import 'package:project/Search.dart';
 
-class Home extends StatefulWidget {
-  //** Home Page */
-  Home({Key? key}) : super(key: key);
+class AddPost extends StatefulWidget {
+  AddPost({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => HomeState();
+  State<StatefulWidget> createState() => AddPostState();
 }
 
-class HomeState extends State<Home> {
+class AddPostState extends State<AddPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        //** Down the Page */
         backgroundColor: Colors.black,
         items: [
           BottomNavigationBarItem(
             icon: IconButton(
-              //** Home Icon */
               icon: Icon(
                 Icons.home,
-                color: Colors.orange,
+                color: Colors.white,              
               ),
-              onPressed: () {}, //!! Nothing ////
+              onPressed: () {},
             ),
           ),
           BottomNavigationBarItem(
-            //** Search Icon */
             icon: IconButton(
               icon: Icon(
                 Icons.search_rounded,
                 color: Colors.white,
               ),
-              onPressed: () { //** Push to Search Page */
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Search(),
-                  ),
-                );
-              }, 
+              onPressed: () {},
             ),
           ),
           BottomNavigationBarItem(
             icon: IconButton(
               icon: Icon(
                 Icons.add_circle,
-                color: Colors.white,
+                color: Colors.orange,
               ),
-              onPressed: () { //** Push to Add Post PAge */
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AddPost(),
-                  ),
-                );
-              },
+              onPressed: () {},
             ),
           ),
           BottomNavigationBarItem(

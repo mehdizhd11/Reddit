@@ -65,7 +65,7 @@ class UserIdentity extends StatelessWidget {
               height: 40,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.orange),
-                onPressed: () { //&& Go To Sign Up Page //
+                onPressed: () {    //&& Go To Sign Up Page //
                   Navigator.push(context,
                     MaterialPageRoute(
                       builder: (context) => SignUp(),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/Home.dart';
 
 class SignIn extends StatefulWidget {
   SignIn({Key? key}) : super(key: key);
@@ -26,8 +27,7 @@ class SignInState extends State<SignIn> {
                 width: 150,
                 height: 150,
               ),
-              SizedBox(height: 30,),              
-              Container(  //&& &&&&Input UserName From client **************/
+              Container(  //&& &&&&Input UserName From client */
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
                 child: TextField(
                   style: TextStyle(
@@ -104,6 +104,27 @@ class SignInState extends State<SignIn> {
                   ),
                 ),
               ),
+              Container(
+                margin: EdgeInsets.fromLTRB(50, 200, 50, 0),
+                child: ElevatedButton(
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontFamily: 'GoogleSans-Medium',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                      MaterialPageRoute(
+                        builder: (context) => Home(),
+                      ),
+                    );
+                  },
+                )
+              )
             ],
           ),
         ));

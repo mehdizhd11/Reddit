@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/UserIdentity.dart';
 import 'Home.dart';
 
 class SignIn extends StatefulWidget {
@@ -16,6 +17,9 @@ class SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+      ),
         backgroundColor: Colors.black,
         body: Container(
           width: double.infinity,

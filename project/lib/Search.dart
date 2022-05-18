@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
   Search({Key? key}) : super(key: key);
-
+  
   @override
   State<StatefulWidget> createState() => SearchState();
 }

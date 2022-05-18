@@ -52,7 +52,7 @@ class HomeState extends State<Home> {
                 Icons.add_circle,
                 color: Colors.white,
               ),
-              onPressed: () { //** Push to Add Post PAge */
+              onPressed: () { //** Push to Add Post Page */
                 Navigator.push(
                   context,
                   MaterialPageRoute(

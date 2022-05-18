@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'Home.dart';
 
 class SignUp extends StatefulWidget {
   SignUp({Key? key}) : super(key: key);
@@ -135,6 +136,37 @@ class SignUpState extends State<SignUp> {
                       fontWeight: FontWeight.bold,
                     ),
                     contentPadding: EdgeInsets.all(25),
+                  ),
+                ),
+              ),
+              //SizedBox(height: 100,),
+              Container(  //** Continue Button */
+                margin: EdgeInsets.fromLTRB(50, 95, 50, 0),
+                
+                child: ElevatedButton(
+
+                  onPressed: () { //** Go to Home Page */
+                    Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => Home(),
+                    ),
+                  );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(180, 50),
+                    primary: Colors.orange,
+                    onPrimary: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'GoogleSans-Medium',
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

@@ -17,9 +17,21 @@ class SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-      ),
+        appBar: AppBar( //** BAck to UserIdentity */
+          backgroundColor: Colors.black,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                MaterialPageRoute(
+                  builder: (context) => UserIdentity(),
+                ),
+              );
+            },
+          ),
+        ),
         backgroundColor: Colors.black,
         body: Container(
           width: double.infinity,
@@ -110,16 +122,14 @@ class SignInState extends State<SignIn> {
               ),
               //SizedBox(height: 100,),
               Container(  //** Continue Button */
-                margin: EdgeInsets.fromLTRB(50, 95, 50, 0),
-                
+                margin: EdgeInsets.fromLTRB(50, 95, 50, 0),                
                 child: ElevatedButton(
-
                   onPressed: () { //** Go to Home Page */
                     Navigator.push(context,
-                    MaterialPageRoute(
-                      builder: (context) => Home(),
-                    ),
-                  );
+                      MaterialPageRoute(
+                        builder: (context) => Home(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(180, 50),

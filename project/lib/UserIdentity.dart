@@ -22,8 +22,6 @@ class UserIdentity extends StatelessWidget {
               width: 150,
               height: 150,
             ),
-            //! set distance between children **/
-            SizedBox(height: 20,),
             //?? Text Welcome
             Text('Welcome to Reddit', 
               style: TextStyle(
@@ -32,6 +30,7 @@ class UserIdentity extends StatelessWidget {
                 fontFamily: 'GoogleSans-Medium',
               ),
             ),
+            //?? Set Distance between children */
             SizedBox(height: 30),
             //****** Sign in Button */
             Container(

@@ -27,8 +27,7 @@ class SignInState extends State<SignIn> {
                 width: 150,
                 height: 150,
               ),
-              SizedBox(height: 30,),              
-              Container(  //&& &&&&Input UserName From client **************/
+              Container(  //&& &&&&Input UserName From client */
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
                 child: TextField(
                   style: TextStyle(

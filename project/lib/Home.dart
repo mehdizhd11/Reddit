@@ -20,10 +20,13 @@ class HomeState extends State<Home> {
       //** Down The Page */
       bottomNavigationBar: BottomNavigationBar(
         //** Style */
+        iconSize: 25,
         type: BottomNavigationBarType.fixed, // Fixed 
         backgroundColor: Colors.black, // <-- This works for fixed
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
+        showSelectedLabels: false, //* Don't show Label */
+        showUnselectedLabels: false, //* Don't Show Label */
         items: [
           //** Home Icon */
           BottomNavigationBarItem(
@@ -48,7 +51,36 @@ class HomeState extends State<Home> {
             ),
             label: "Search",
           ),
-          
+          //* Add Icon Push to Add Post */
+          BottomNavigationBarItem(
+            icon: IconButton(
+              icon: Icon(
+                Icons.add_circle
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(
+                    builder: (context) => AddPost(),
+                  ),
+                );
+              },
+            ),
+            label: "Add",
+          ),
+          //** Chats Icon Push To Nothing */**************** */
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.chat,
+              ),
+            label: "Chats",
+          ),
+          //** Noti Icon Push To Nothing */***************** */
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.notifications_rounded
+            ),
+            label: "Notifications",
+          ),
         ]
       ),
     );

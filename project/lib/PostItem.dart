@@ -1,10 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/Home.dart';
 import 'package:project/PostModel.dart';
 
-class PostItem extends StatelessWidget {
-  PostItem(this._postModel);
+class PostItem extends StatefulWidget {
   PostModel _postModel;
+  PostItem(this._postModel);
+
+  @override
+  State<StatefulWidget> createState() => new PostItemState(_postModel);
+}
+
+class PostItemState extends State<PostItem> {
+  PostModel _postModel;
+  PostItemState(this._postModel);
   int likeState = 0;
 
   @override
@@ -75,7 +84,8 @@ class PostItem extends StatelessWidget {
               ),
             ),
           ),
-          Row( //** Optional Keys */
+          Row(
+            //** Optional Keys */
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
@@ -86,39 +96,101 @@ class PostItem extends StatelessWidget {
                 child: Row(
                   //** Icons and Text */
                   children: [
-                    IconButton( //** Like Icon */
+                    IconButton(
+                      //** Like Icon */
                       icon: Icon(
                         Icons.thumb_up_alt_outlined,
                         color: likeState == 1 ? Colors.orange : Colors.black,
                       ),
                       onPressed: () {
-                        likeState == 1
-                            ? _postModel.numLikes--
-                            : _postModel.numLikes++;
+                        setState(() {
+                          if (likeState == 1) {
+                            likeState = 0;
+                            _postModel.numLikes--;
+                          } else if (likeState == -1) {
+                            likeState = 1;
+                            _postModel.numLikes++;
+                            _postModel.numDisLikes--;
+                          } else {
+                            likeState = 0;
+                            _postModel.numLikes++;
+                          }
+                        });
                       },
                     ),
-                    Text( //** Num Likes */
+                    Text(
+                      //** Num Likes */
                       (_postModel.numLikes - _postModel.numDisLikes).toString(),
                       style: TextStyle(
-                        color: likeState == 1 ? Colors.orange : (likeState == 0
-                          ? Colors.grey : Colors.red),
+                        color: likeState == 1
+                            ? Colors.orange
+                            : (likeState == 0 ? Colors.grey : Colors.red),
                         fontSize: 16,
                         fontFamily: 'GoogleSans-Medium',
                         fontWeight: FontWeight.bold,
                       ),
-                      IconButton( //** DisLike Icon */
-                        icon: Icon(
-                          Icons.thumd_down_alt_outlined,
-                          color: likeState == -1 ? Colors.red : Colors.black,
-                        ),
-                        onPressed: () {
-                          likeState == -1 ?
-                            ///********************************************* */
-                        },
-                      )
-                    )
+                    ),
+                    IconButton(
+                      //** DisLike Icon */
+                      icon: Icon(
+                        Icons.thumb_down_alt_outlined,
+                        color: likeState == 1 ? Colors.red : Colors.black,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          if (likeState == -1) {
+                            likeState = 0;
+                            _postModel.numDisLikes--;
+                          } else if (likeState == 1) {
+                            likeState = -1;
+                            _postModel.numDisLikes++;
+                            _postModel.numLikes--;
+                          } else {
+                            likeState = -1;
+                            _postModel.numDisLikes++;
+                          }
+                        });
+                      },
+                    ),
                   ],
                 ),
+              ),
+              SizedBox(width: 20,), //** Distance betWeen Comments and ... */
+              TextButton.icon( //** Comments And numComments */
+                icon: Icon(Icons.chat_bubble_outline),
+                label: Text(
+                  _postModel.numComments.toString(),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'GoogleSans-Medium',
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(), //** INcompelete go to POSTPROP */!!!!!
+                  ),
+                );
+                },
+              ),
+              SizedBox(width: 30,), //** Distance */
+              TextButton.icon( //** Share  */
+                onPressed: () {}, //** NOTHING */
+                icon: Icon(Icons.share_outlined),
+                label: Text(
+                  'Share',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'GoogleSans-Medium',
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ),
+              SizedBox(width: 10,), //** Distance */
+              Icon(
+                Icons.favorite,
+                color: Colors.orange,
               )
             ],
           )

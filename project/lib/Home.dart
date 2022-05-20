@@ -15,6 +15,34 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: TextField(
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 15,
+            fontFamily: 'GoogleSans-Medium',
+            fontWeight: FontWeight.bold,
+          ),
+          // textAlign: TextAlign.center,
+          cursorColor: Colors.black,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.grey,
+            hintText: 'Search',
+            hintStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+              fontFamily: 'GoogleSans-Medium',
+              fontWeight: FontWeight.bold,
+            ),
+            prefixIcon: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
       //** Scaffold Color */
       backgroundColor: Colors.black,
       //** Down The Page */

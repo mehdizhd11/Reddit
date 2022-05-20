@@ -97,12 +97,25 @@ class PostItem extends StatelessWidget {
                             : _postModel.numLikes++;
                       },
                     ),
-                    Text(
+                    Text( //** Num Likes */
                       (_postModel.numLikes - _postModel.numDisLikes).toString(),
                       style: TextStyle(
-                        color: likeState == 1 ? Colors.orange : Colors.grey,
-                        
+                        color: likeState == 1 ? Colors.orange : (likeState == 0
+                          ? Colors.grey : Colors.red),
+                        fontSize: 16,
+                        fontFamily: 'GoogleSans-Medium',
+                        fontWeight: FontWeight.bold,
                       ),
+                      IconButton( //** DisLike Icon */
+                        icon: Icon(
+                          Icons.thumd_down_alt_outlined,
+                          color: likeState == -1 ? Colors.red : Colors.black,
+                        ),
+                        onPressed: () {
+                          likeState == -1 ?
+                            ///********************************************* */
+                        },
+                      )
                     )
                   ],
                 ),

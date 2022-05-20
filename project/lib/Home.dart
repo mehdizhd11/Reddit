@@ -15,16 +15,16 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //** App BAr , Search Icon */
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: TextField(
           style: TextStyle(
             color: Colors.black,
             fontSize: 15,
-            fontFamily: 'GoogleSans-Medium',
+            fontFamily: 'GoogleSans-Medium', //** Font */
             fontWeight: FontWeight.bold,
           ),
-          // textAlign: TextAlign.center,
           cursorColor: Colors.black,
           decoration: InputDecoration(
             filled: true,
@@ -37,7 +37,7 @@ class HomeState extends State<Home> {
               fontWeight: FontWeight.bold,
             ),
             prefixIcon: Icon(
-              Icons.search,
+              Icons.search, //** Search Icon */
               color: Colors.black,
             ),
           ),
@@ -52,9 +52,9 @@ class HomeState extends State<Home> {
         type: BottomNavigationBarType.fixed, // Fixed 
         backgroundColor: Colors.black, // <-- This works for fixed
         selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels: false, //* Don't show Label */
-        showUnselectedLabels: false, //* Don't Show Label */
+        unselectedItemColor: Colors.white,
+        showSelectedLabels: false, //** Don't show Label */
+        showUnselectedLabels: false, //** Don't Show Label */
         items: [
           //** Home Icon */
           BottomNavigationBarItem(
@@ -114,71 +114,3 @@ class HomeState extends State<Home> {
     );
   }
 }
-
-
-      // bottomNavigationBar: BottomNavigationBar(
-      //   //** Down the Page */
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: IconButton(
-      //         //** Home Icon */
-      //         icon: Icon(
-      //           Icons.home,
-      //           color: Colors.orange,
-      //         ),
-      //         onPressed: () {}, //!! Nothing ////
-      //       ),
-      //     ),
-      //     BottomNavigationBarItem(
-      //       //** Search Icon */
-      //       icon: IconButton(
-      //         icon: Icon(
-      //           Icons.search_rounded,
-      //           color: Colors.white,
-      //         ),
-      //         onPressed: () { //** Push to Search Page */
-      //           Navigator.push(
-      //             context,
-      //             MaterialPageRoute(
-      //               builder: (context) => Search(),
-      //             ),
-      //           );
-      //         }, 
-      //       ),
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: IconButton(
-      //         icon: Icon(
-      //           Icons.add_circle,
-      //           color: Colors.white,
-      //         ),
-      //         onPressed: () { //** Push to Add Post Page */
-      //           Navigator.push(
-      //             context,
-      //             MaterialPageRoute(
-      //               builder: (context) => AddPost(),
-      //             ),
-      //           );
-      //         },
-      //       ),
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: IconButton(
-      //         icon: Icon(
-      //           Icons.wechat_rounded,
-      //           color: Colors.white,
-      //         ),
-      //         onPressed: () {},
-      //       ),
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: IconButton(
-      //         icon: Icon(
-      //           Icons.notifications_sharp,
-      //           color: Colors.white,
-      //         ),
-      //         onPressed: () {},
-      //       ),
-      //     ),
-      //   ],
-      // ),

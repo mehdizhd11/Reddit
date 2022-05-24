@@ -1,9 +1,14 @@
-//** Reddit by Mehdi Zahedi And Matim Momeni  
-//** AP Final Project , 1400-1401 , Dr.Vahidi 
-//** Thanks TA Team 
+//** Reddit by Mehdi Zahedi And Matin Momeni
+//** AP Final Project , 1400-1401 , Dr.Vahidi
+//** Thanks TA Team
+//**
+//**
+//**
+//**
 
 import 'package:flutter/material.dart';
 import 'SplashScreen.dart';
+import 'Settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,33 +22,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: Settings(),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // void main() {
 //   runApp(const MyApp());

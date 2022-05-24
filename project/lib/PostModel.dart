@@ -83,11 +83,10 @@ class PostModel {
       this._publisherName,
       this._userName,
       this._gregorianDate,
-      //this._solarDate,
+      this._solarDate,
       this._text,
       this._numLikes,
       this._numDisLikes,
       this._numComments,
-      //this._comments
-      );
+      this._comments);
 }

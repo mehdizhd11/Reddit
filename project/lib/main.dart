@@ -1,6 +1,7 @@
-//** Reddit by Mehdi Zahedi And Matim Momeni  
+//** Reddit by Mehdi Zahedi And Matin Momeni  
 //** AP Final Project , 1400-1401 , Dr.Vahidi 
 //** Thanks TA Team 
+
 
 import 'package:flutter/material.dart';
 import 'SplashScreen.dart';
@@ -13,7 +14,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 
 

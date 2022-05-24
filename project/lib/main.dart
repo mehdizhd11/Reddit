@@ -1,21 +1,11 @@
-<<<<<<< HEAD
 //** Reddit by Mehdi Zahedi And Matin Momeni  
 //** AP Final Project , 1400-1401 , Dr.Vahidi 
 //** Thanks TA Team 
-=======
-//** Reddit by Mehdi Zahedi And Matin Momeni
-//** AP Final Project , 1400-1401 , Dr.Vahidi
-//** Thanks TA Team
-//**
-//**
-//**
-//**
->>>>>>> 34d536273c8caee820f3b9bf797a360897bade56
+
 
 
 import 'package:flutter/material.dart';
 import 'SplashScreen.dart';
-import 'Settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,36 +18,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Settings(),
+      home: SplashScreen(),
     );
   }
 }
 
-<<<<<<< HEAD
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 34d536273c8caee820f3b9bf797a360897bade56
 // void main() {
 //   runApp(const MyApp());
 // }

@@ -43,7 +43,7 @@ class SignInState extends State<SignIn> {
                 width: 150,
                 height: 150,
               ),
-              Container(  //&& &&&&Input UserName From client */
+              Container(  //** Input UserName From client */
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 10),
                 child: TextField(
                   style: TextStyle(
@@ -74,7 +74,7 @@ class SignInState extends State<SignIn> {
                   ),
                 ),
               ),
-              Container(    //*****&&&&& PassWord set Client *****/
+              Container(    //** PassWord set Client */
                 margin: EdgeInsets.fromLTRB(50, 10, 50, 0),
                 child: TextField(
                   obscureText: showPass,

@@ -13,9 +13,20 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //** Scaffold color */
+      backgroundColor: Colors.black,
+      //** App Bar */
       appBar: AppBar(
         title: Center(
-          child: Text('Settings'),
+          child: Text(
+            'Settings',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontFamily: 'GoogleSans-Medium',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -24,54 +35,105 @@ class _SettingsState extends State<Settings> {
           },
         ),
         backgroundColor: Colors.black,
-        ),
+      ),
+      //** End the App Bar */
+      //*************************************/
+      //** body and List of Settings */
       body: SettingsList(
         lightTheme: SettingsThemeData(
-          settingsListBackground: Colors.orange,
-          settingsSectionBackground: Colors.grey,
-        ),
+            //** Setting theme */
+            settingsListBackground: Colors.black,
+            settingsSectionBackground: Colors.black),
         sections: [
           SettingsSection(
-            //title: Text('General'),
             tiles: [
               SettingsTile.navigation(
-                title: Text('Profile'),
-                leading: Icon(Icons.person),
+                //** Profile */
+                title: Text(
+                  'Profile',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'GoogleSans-Medium',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                leading: Icon(
+                  Icons.person_outline,
+                  color: Colors.orange,
+                ),
                 onPressed: (BuildContext context) {
-                  Navigator.push(context,
+                  Navigator.push(
+                    context,
                     MaterialPageRoute(
-                      builder: (context) => SplashScreen(),
+                      builder: (context) => SplashScreen(), //!!!!
                     ),
                   );
                 },
               ),
               SettingsTile.navigation(
-                title: Text('Create Subreddit'),
-                leading: Icon(Icons.add_circle),
+                //** Create Sub... */
+                title: Text(
+                  'Create Subreddit',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontFamily: 'GoogleSans-Medium',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                leading: Icon(
+                  Icons.add_circle_outline,
+                  color: Colors.orange,
+                ),
                 onPressed: (BuildContext context) {
-                  Navigator.push(context,
+                  Navigator.push(
+                    context,
                     MaterialPageRoute(
-                      builder: (context) => SplashScreen(),
+                      builder: (context) => SplashScreen(), //!! !
                     ),
                   );
                 },
               ),
               SettingsTile.navigation(
-                title: Text('Saved Posts'),
-                leading: Icon(Icons.bookmark),
+                //** Saved Posts */
+                title: Text(
+                  'Saved Posts',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'GoogleSans-Medium',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                leading: Icon(
+                  Icons.bookmark_outline,
+                  color: Colors.orange,
+                ),
                 onPressed: (BuildContext context) {
-                  Navigator.push(context,
+                  Navigator.push(
+                    context,
                     MaterialPageRoute(
-                      builder: (context) => SplashScreen(),
+                      builder: (context) => SplashScreen(), //!!!
                     ),
                   );
                 },
               ),
               SettingsTile.navigation(
-                title: Text('About Us'),
-                leading: Icon(Icons.info),
+                //** About Us */
+                title: Text(
+                  'About Us',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'GoogleSans-Medium',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                leading: Icon(
+                  Icons.info_outline,
+                  color: Colors.orange,
+                ),
                 onPressed: (BuildContext context) {
-                  Navigator.push(context,
+                  Navigator.push(
+                    context,
                     MaterialPageRoute(
                       builder: (context) => SplashScreen(),
                     ),
@@ -79,13 +141,25 @@ class _SettingsState extends State<Settings> {
                 },
               ),
               SettingsTile.switchTile(
-                title: Text('Theme'),
-                leading: Icon(Icons.brightness_3),
+                //** Theme INCOMPELETE */
+                title: Text(
+                  'Theme',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'GoogleSans-Medium',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                leading: Icon(
+                  Icons.brightness_3,
+                  color: Colors.orange,
+                ),
                 onToggle: (bool value) {
                   setState(() {
                     lockInBackground = value;
                   });
-                }, initialValue: null,
+                },
+                initialValue: null,
               ),
             ],
           ),

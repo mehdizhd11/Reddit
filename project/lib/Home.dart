@@ -23,7 +23,8 @@ class HomeState extends State<Home> {
       //** App Bar , Search Icon */
       appBar: AppBar(
         backgroundColor: Colors.black, //** App Bar color */
-        title: TextField( //** Search Bar */
+        title: TextField(
+          //** Search Bar */
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -55,34 +56,30 @@ class HomeState extends State<Home> {
               fontFamily: 'GoogleSans-Medium',
               fontWeight: FontWeight.bold,
             ),
-            prefixIcon: IconButton( //** Search Icon */
+            prefixIcon: IconButton(
+              //** Search Icon */
               icon: Icon(
                 Icons.search,
                 color: Colors.orange,
               ),
-              onPressed: () {
-                // Navigator.push(context,
-                //   MaterialPageRoute(
-                //     builder: (context) => Search(),
-                //   ),
-                // );
-              },
-
+              onPressed: () {},
             ),
           ),
         ),
-        actions: [ //** Setting Icon */
+        actions: [
+          //** Setting Icon */
           IconButton(
             icon: Icon(
               Icons.settings,
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(
-                    builder: (context) => Settings(), //** Push to Setting */
-                  ),
-                );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Settings(), //** Push to Setting */
+                ),
+              );
             },
           ),
         ],

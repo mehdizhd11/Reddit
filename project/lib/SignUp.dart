@@ -157,7 +157,7 @@ class SignUpState extends State<SignUp> {
               ),
               //SizedBox(height: 100,),
               Container(  //** Continue Button */
-                margin: EdgeInsets.fromLTRB(50, 95, 50, 0),
+                margin: EdgeInsets.fromLTRB(50, 70, 50, 0),
                 child: ElevatedButton(
                   onPressed: () { //** Go to Home Page */
                     Navigator.push(context,

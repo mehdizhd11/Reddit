@@ -17,7 +17,7 @@ class SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar( //** BAck to UserIdentity */
+        appBar: AppBar( //** Back to UserIdentity */
           backgroundColor: Colors.black,
           leading: IconButton(
             icon: Icon(

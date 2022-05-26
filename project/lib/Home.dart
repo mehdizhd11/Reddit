@@ -59,26 +59,13 @@ class HomeState extends State<Home> {
               },
 
             ),
-            suffixIcon: IconButton( //** Settings Icon */
-              icon: Icon(
-                Icons.settings,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(
-                    builder: (context) => Settings(),
-                  ),
-                );
-              },
-            ),
           ),
         ),
         actions: [ //** Setting Icon */
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: Colors.orange,
+              color: Colors.white,
             ),
             onPressed: () {
               Navigator.push(context,

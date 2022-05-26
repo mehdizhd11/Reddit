@@ -4,6 +4,7 @@ import 'package:project/AddPost.dart';
 import 'package:project/PostItem.dart';
 import 'package:project/PostModel.dart';
 import 'package:project/Search.dart';
+import 'package:project/Settings.dart';
 
 class Home extends StatefulWidget {
   //** Home Page */
@@ -19,7 +20,7 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //** App BAr , Search Icon */
+      //** App Bar , Search Icon , Settings Icon */
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: TextField(
@@ -28,6 +29,7 @@ class HomeState extends State<Home> {
             fontSize: 15,
             fontFamily: 'GoogleSans-Medium', //** Font */
             fontWeight: FontWeight.bold,
+            
           ),
           cursorColor: Colors.black,
           decoration: InputDecoration(
@@ -37,12 +39,38 @@ class HomeState extends State<Home> {
             hintStyle: TextStyle(
               color: Colors.black,
               fontSize: 15,
-              fontFamily: 'GoogleSans-Medium',
+              fontFamily: 'GoogleSans-Medium', //** Font */
               fontWeight: FontWeight.bold,
             ),
-            prefixIcon: Icon(
-              Icons.search, //** Search Icon */
-              color: Colors.black,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50),
+            ),
+            prefixIcon: IconButton( //** Search Icon */
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                // Navigator.push(context,
+                //   MaterialPageRoute(
+                //     builder: (context) => Search(),
+                //   ),
+                // );
+              },
+
+            ),
+            suffixIcon: IconButton( //** Settings Icon */
+              icon: Icon(
+                Icons.settings,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(
+                    builder: (context) => Settings(),
+                  ),
+                );
+              },
             ),
           ),
         ),

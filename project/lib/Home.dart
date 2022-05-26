@@ -117,16 +117,13 @@ class HomeState extends State<Home> {
       //**********************************************************/
       //** List of Posts */
       body: Container(
-        margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
-        width: double.infinity,
-        child: ListView.builder(
-            itemCount: _postList.length,
-            itemBuilder: (context, index) {
-              _postList
-                  .sort(((a, b) => b.gregorianDate.compareTo(a.gregorianDate)));
-              return PostItem(_postList[index]);
-            }),
-      ),
+          margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
+          width: double.infinity,
+          child: ListView.builder(
+              itemCount: _postList.length,
+              itemBuilder: (BuildContext ctxt, int index) {
+                return PostItem(_postList[index]);
+              })),
       //** End the List of Posts */
       //************************************** */
     );

@@ -14,7 +14,11 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  List<PostModel> _postList = [];
+
+  List<PostModel> _postList = [
+    PostModel('PornHub', 'Matin', DateTime.now(),
+      DateTime.now(), 'Thanks', 25, 13, 14, [])
+  ];
 
   @override
   Widget build(BuildContext context) {

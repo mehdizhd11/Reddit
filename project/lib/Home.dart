@@ -55,9 +55,19 @@ class HomeState extends State<Home> {
               fontFamily: 'GoogleSans-Medium',
               fontWeight: FontWeight.bold,
             ),
-            prefixIcon: Icon(
-              Icons.search, //** Search Icon */
-              color: Colors.orange,
+            prefixIcon: IconButton( //** Search Icon */
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                // Navigator.push(context,
+                //   MaterialPageRoute(
+                //     builder: (context) => Search(),
+                //   ),
+                // );
+              },
+
             ),
           ),
         ),

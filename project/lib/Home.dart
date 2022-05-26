@@ -20,30 +20,40 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //** App Bar , Search Icon , Settings Icon */
+      //** App Bar , Search Icon */
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: TextField(
+        backgroundColor: Colors.black, //** App Bar color */
+        title: TextField( //** Search Bar */
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 15,
             fontFamily: 'GoogleSans-Medium', //** Font */
             fontWeight: FontWeight.bold,
-            
           ),
-          cursorColor: Colors.black,
+          cursorColor: Colors.white,
           decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.grey,
-            hintText: 'Search',
-            hintStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
-              fontFamily: 'GoogleSans-Medium', //** Font */
-              fontWeight: FontWeight.bold,
-            ),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(50),
+              borderSide: BorderSide(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            filled: true,
+            fillColor: Color.fromARGB(255, 32, 28, 28),
+            hintText: 'Search', //** Hint Text 'Search' */
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.orange,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            hintStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 15,
+              fontFamily: 'GoogleSans-Medium',
+              fontWeight: FontWeight.bold,
             ),
             prefixIcon: IconButton( //** Search Icon */
               icon: Icon(
@@ -74,8 +84,8 @@ class HomeState extends State<Home> {
                   ),
                 );
             },
-          )
-        ]
+          ),
+        ],
       ),
       //** End the AppBar */
       //*****************************************************/

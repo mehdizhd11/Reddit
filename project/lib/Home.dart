@@ -20,30 +20,44 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //** App BAr , Search Icon */
+      //** App Bar , Search Icon */
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: TextField(
+        backgroundColor: Colors.black, //** App Bar color */
+        title: TextField( //** Search Bar */
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 15,
             fontFamily: 'GoogleSans-Medium', //** Font */
             fontWeight: FontWeight.bold,
           ),
-          cursorColor: Colors.black,
+          cursorColor: Colors.white,
           decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.white,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(25),
+            ),
             filled: true,
-            fillColor: Colors.grey,
-            hintText: 'Search',
+            fillColor: Color.fromARGB(255, 15, 13, 13),
+            hintText: 'Search', //** Hint Text 'Search' */
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.orange,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(25),
+            ),
             hintStyle: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 15,
               fontFamily: 'GoogleSans-Medium',
               fontWeight: FontWeight.bold,
             ),
             prefixIcon: Icon(
               Icons.search, //** Search Icon */
-              color: Colors.black,
+              color: Colors.orange,
             ),
           ),
         ),
@@ -51,7 +65,7 @@ class HomeState extends State<Home> {
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: Colors.orange,
+              color: Colors.white,
             ),
             onPressed: () {
               Navigator.push(context,
@@ -60,8 +74,8 @@ class HomeState extends State<Home> {
                   ),
                 );
             },
-          )
-        ]
+          ),
+        ],
       ),
       //** End the AppBar */
       //*****************************************************/

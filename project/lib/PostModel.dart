@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:project/CommentModel.dart';
 
 class PostModel {
   //** Fields for Posts */
@@ -66,15 +67,15 @@ class PostModel {
     _numComments = numComments;
   }
 
-  List<PostModel> _comments = [];
+  List<CommentModel> _comments = [];
 
-  List<PostModel> get comments => _comments;
+  List<CommentModel> get comments => _comments;
 
-  set comments(List<PostModel> comments) {
+  set comments(List<CommentModel> comments) {
     _comments = comments;
   }
 
-  void addComment(PostModel comment) {
+  void addComment(CommentModel comment) {
     _comments.add(comment);
   }
 

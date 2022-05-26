@@ -4,6 +4,7 @@ import 'package:project/AddPost.dart';
 import 'package:project/PostItem.dart';
 import 'package:project/PostModel.dart';
 import 'package:project/Search.dart';
+import 'package:project/Settings.dart';
 
 class Home extends StatefulWidget {
   //** Home Page */
@@ -46,6 +47,21 @@ class HomeState extends State<Home> {
             ),
           ),
         ),
+        actions: [ //** Setting Icon */
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.orange,
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(
+                    builder: (context) => Settings(), //** Push to Setting */
+                  ),
+                );
+            },
+          )
+        ]
       ),
       //** End the AppBar */
       //*****************************************************/

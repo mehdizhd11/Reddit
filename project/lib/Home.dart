@@ -74,6 +74,21 @@ class HomeState extends State<Home> {
             ),
           ),
         ),
+        actions: [ //** Setting Icon */
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.orange,
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(
+                    builder: (context) => Settings(), //** Push to Setting */
+                  ),
+                );
+            },
+          )
+        ]
       ),
       //** End the AppBar */
       //*****************************************************/

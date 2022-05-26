@@ -14,15 +14,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-<<<<<<< HEAD
-
-  List<PostModel> _postList = [
-    PostModel('PornHub', 'Matin', DateTime.now(),
-      DateTime.now(), 'Thanks', 25, 13, 14, [])
-  ];
-=======
   List<PostModel> _postList = [];
->>>>>>> parent of 3e5dcac (08:10 PM 20 May)
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +47,7 @@ class HomeState extends State<Home> {
           ),
         ),
       ),
-      //*** End the AppBar */
+      //** End the AppBar */
       //*****************************************************/
       //** Scaffold Color */
       backgroundColor: Colors.black,

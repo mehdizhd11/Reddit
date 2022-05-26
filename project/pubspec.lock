@@ -88,13 +88,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
-  material:
-    dependency: "direct main"
-    description:
-      name: material
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0+2"
   material_color_utilities:
     dependency: transitive
     description:
@@ -115,11 +108,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.8.1"
-=======
-    version: "1.8.0"
-<<<<<<< HEAD
   settings_ui:
     dependency: "direct main"
     description:
@@ -127,9 +116,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
->>>>>>> 34d536273c8caee820f3b9bf797a360897bade56
-=======
->>>>>>> parent of 34d5362 (12:23 AM 25 May)
   sky_engine:
     dependency: transitive
     description: flutter
@@ -185,12 +171,4 @@ packages:
     source: hosted
     version: "2.1.2"
 sdks:
-<<<<<<< HEAD
   dart: ">=2.17.0-0 <3.0.0"
-=======
-  dart: ">=2.16.1 <3.0.0"
-<<<<<<< HEAD
-  settings_ui: ">=2.0.2 <3.0.0"
->>>>>>> 34d536273c8caee820f3b9bf797a360897bade56
-=======
->>>>>>> parent of 34d5362 (12:23 AM 25 May)

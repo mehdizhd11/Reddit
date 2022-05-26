@@ -36,7 +36,7 @@ class SearchState extends State<Search> {
               borderRadius: BorderRadius.circular(25),
             ),
             filled: true,
-            fillColor: Color.fromARGB(255, 15, 13, 13),
+            fillColor: Color.fromARGB(255, 32, 28, 28),
             hintText: 'Search',
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(

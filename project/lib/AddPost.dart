@@ -20,33 +20,126 @@ class AddPostState extends State<AddPost> {
       //** App Bar */
       appBar: AppBar(
         backgroundColor: Colors.black,
-          //** Icon Close */
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.arrow_forward_rounded,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Home(),
-                    ));
-              },
-            )
-          ],
-          centerTitle: true,
-          title: Text(
-            'New Post',
-            style: TextStyle(
-              color: Colors.orange,
-              fontSize: 20,
-              fontFamily: 'GoogleSans-Medium',
-              fontWeight: FontWeight.bold,
+        //** Icon Close */
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.arrow_forward_rounded,
+              color: Colors.white,
             ),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  ));
+            },
+          )
+        ],
+        centerTitle: true,
+        title: Text(
+          'New Post',
+          style: TextStyle(
+            color: Colors.orange,
+            fontSize: 20,
+            fontFamily: 'GoogleSans-Medium',
+            fontWeight: FontWeight.bold,
           ),
+        ),
       ),
+      //** body */
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              //** Title */
+              width: double.infinity,
+              margin: EdgeInsets.all(10),
+              child: TextField(
+                autofocus: true,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'GoogleSans-Medium',
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic),
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.black,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.orange,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.orange,
+                    ),
+                  ),
+                  hintText: 'An intresting title',
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 20,
+                    fontFamily: 'GoogleSans-Medium',
+                    fontWeight: FontWeight.bold,
+                  ),
+                  contentPadding: EdgeInsets.all(20),
+                ),
+              ),
+            ),
+            //** End the Title */
+            //****************************************/
+            //**** Description */
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.all(10),
+              child: TextField(
+                textInputAction: TextInputAction.newline,
+                keyboardType: TextInputType.multiline,
+                minLines: 1,
+                maxLines: 10,
+                maxLength: 50,
+                autofocus: true,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontFamily: 'GoogleSans-Medium',
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  height: 25,
+                ),
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.black,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.orange,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.orange,
+                    ),
+                  ),
+                  hintText: 'Your Text Post (optional)',
+                  hintStyle: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 15,
+                    fontFamily: 'GoogleSans-Medium',
+                  ),
+                  contentPadding: EdgeInsets.all(20),
+                  hintTextDirection: TextDirection.ltr,
+                ),
+              ),
+            ), //** End the Discription */
+          ],
+        ),
+      ),
+      //** End the Body */
       //*************************************/
       //** Down the Page */
       bottomNavigationBar: BottomNavigationBar(

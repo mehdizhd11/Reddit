@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project/AboutUs.dart';
+import 'package:project/Home.dart';
 import 'package:project/SplashScreen.dart';
 import 'package:settings_ui/settings_ui.dart';
+import 'package:project/CreateSubreddit.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -32,7 +34,11 @@ class _SettingsState extends State<Settings> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context,
+                      MaterialPageRoute(
+                        builder: (context) => Home(),
+                      ),
+                    );
           },
         ),
         backgroundColor: Colors.black,
@@ -90,7 +96,7 @@ class _SettingsState extends State<Settings> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SplashScreen(), //!! !
+                      builder: (context) => CreateSubreddit(),
                     ),
                   );
                 },

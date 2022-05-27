@@ -99,7 +99,7 @@ class AddPostState extends State<AddPost> {
               child: TextField(
                 textInputAction: TextInputAction.newline,
                 keyboardType: TextInputType.multiline,
-                maxLines: 24,
+                maxLines: null,
                 autofocus: true,
                 style: TextStyle(
                   color: Colors.white,

@@ -24,7 +24,7 @@ class AddPostState extends State<AddPost> {
         actions: [
           IconButton(
             icon: Icon(
-              Icons.arrow_forward_rounded,
+              Icons.check_rounded,
               color: Colors.white,
             ),
             onPressed: () {
@@ -99,9 +99,7 @@ class AddPostState extends State<AddPost> {
               child: TextField(
                 textInputAction: TextInputAction.newline,
                 keyboardType: TextInputType.multiline,
-                minLines: 1,
-                maxLines: 10,
-                maxLength: 50,
+                maxLines: 24,
                 autofocus: true,
                 style: TextStyle(
                   color: Colors.white,
@@ -109,7 +107,6 @@ class AddPostState extends State<AddPost> {
                   fontFamily: 'GoogleSans-Medium',
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
-                  height: 25,
                 ),
                 cursorColor: Colors.black,
                 decoration: InputDecoration(

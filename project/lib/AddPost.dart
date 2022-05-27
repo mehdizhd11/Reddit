@@ -99,7 +99,7 @@ class AddPostState extends State<AddPost> {
               child: TextField(
                 textInputAction: TextInputAction.newline,
                 keyboardType: TextInputType.multiline,
-                maxLines: null,
+                maxLines: 20,
                 autofocus: true,
                 style: TextStyle(
                   color: Colors.white,
@@ -108,7 +108,7 @@ class AddPostState extends State<AddPost> {
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                 ),
-                cursorColor: Colors.black,
+                cursorColor: Colors.white,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.black,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/AboutUs.dart';
+import 'package:project/Profile.dart';
 import 'package:project/SplashScreen.dart';
 import 'package:settings_ui/settings_ui.dart';
 
@@ -66,7 +67,7 @@ class _SettingsState extends State<Settings> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SplashScreen(), //!!!!
+                      builder: (context) => Profile(),
                     ),
                   );
                 },

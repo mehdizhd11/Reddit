@@ -58,6 +58,16 @@ class HomeState extends State<Home> {
       125,
       14,
     ),
+    PostModel(
+      'Iran',
+      'Raisi',
+      DateTime.parse('2022-02-01'),
+      DateTime.now(),
+      "YOOOO HOOOO HOOOOO",
+      225,
+      124,
+      178,
+    )
   ];
 
   @override

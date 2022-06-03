@@ -15,7 +15,7 @@ class PostItemState extends State<PostItem> {
   PostModel _postModel;
   PostItemState(this._postModel);
   int likeState = 0;
-  bool collections = false;
+  bool _collections = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +58,8 @@ class PostItemState extends State<PostItem> {
                         fontSize: 14,
                         fontFamily: 'GoogleSans-Medium',
                         fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic),
+                        fontStyle: FontStyle.italic
+                    ),
                   ),
                   Text(
                     //** UserName and DateTime */
@@ -217,17 +218,18 @@ class PostItemState extends State<PostItem> {
               SizedBox(
                 width: 50,
               ), //** Distance */
-              IconButton(           
+              IconButton(  
+                //** _Collections */         
                 icon: Icon(
                   Icons.bookmark_add_outlined,
-                  color: collections ? Colors.orange : Colors.white,                  
+                  color: _collections ? Colors.orange : Colors.white,                  
                 ),
                 onPressed: () {
                   setState(() {
-                    if (collections)
-                      collections = false;
+                    if (_collections)
+                      _collections = false;
                     else
-                      collections = true;
+                      _collections = true;
                   });
                 },
               )

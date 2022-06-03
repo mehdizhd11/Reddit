@@ -15,19 +15,20 @@ class PostItemState extends State<PostItem> {
   PostModel _postModel;
   PostItemState(this._postModel);
   int likeState = 0;
+  bool favorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity, //* Set to Page */
-      margin: EdgeInsets.all(30),
+      margin: EdgeInsets.all(10),
       height: 150,
       decoration: BoxDecoration(
         //** Beautiful :) */
         color: Colors.black,
         border: Border.all(
           color: Colors.orange,
-          width: 3,
+          width: 2,
         ),
         borderRadius: BorderRadius.circular(20.0),
       ),
@@ -37,35 +38,43 @@ class PostItemState extends State<PostItem> {
             children: [
               CircleAvatar(
                 //** Profile Image */
+                child: Icon(
+                  Icons.reddit,
+                  color: Colors.orange,
+                  size: 35,
+                ),
                 radius: 30.0,
-                backgroundColor: Colors.orange,
+                backgroundColor: Colors.black,
                 //  child: Image.asset(), //** incompelete Profile */ //* 14 minuts 41////
               ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 //** Publisher and UserName */
                 children: [
                   Text(
                     _postModel.publisherName, //** Publisher Name */
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontFamily: 'GoogleSans-Medium',
-                      fontWeight: FontWeight.bold,
-                    ),
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontFamily: 'GoogleSans-Medium',
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
                   ),
                   Text(
                     //** UserName and DateTime */
                     _postModel.userName +
-                        '.' +
+                        '  ' +
                         DateTime.now()
                             .difference(_postModel.gregorianDate)
-                            .inHours
-                            .toString(),
+                            .inDays
+                            .toString() +
+                        '  Days ago',
                     style: TextStyle(
-                      color: Colors.grey,
-                      fontFamily: 'GoogleSans-Medium',
-                      fontSize: 12,
-                    ),
+                        color: Colors.white,
+                        fontFamily: 'GoogleSans-Medium',
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
                   ),
                 ],
               ),
@@ -74,17 +83,21 @@ class PostItemState extends State<PostItem> {
           Container(
             //** Text of post */
             width: double.infinity,
-            margin: EdgeInsets.only(left: 20),
+            margin: EdgeInsets.fromLTRB(10, 0, 0, 25),
             child: Text(
               _postModel.text,
               style: TextStyle(
-                color: Colors.orange,
+                color: Colors.white,
                 fontFamily: 'GoogleSans-Medium',
-                fontSize: 20,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
             //** Optional Keys */
             children: [
               Container(
@@ -98,8 +111,8 @@ class PostItemState extends State<PostItem> {
                     IconButton(
                       //** Like Icon */
                       icon: Icon(
-                        Icons.thumb_up_alt_outlined,
-                        color: likeState == 1 ? Colors.orange : Colors.black,
+                        Icons.thumb_up,
+                        color: likeState == 1 ? Colors.orange : Colors.white,
                       ),
                       onPressed: () {
                         setState(() {
@@ -111,7 +124,7 @@ class PostItemState extends State<PostItem> {
                             _postModel.numLikes++;
                             _postModel.numDisLikes--;
                           } else {
-                            likeState = 0;
+                            likeState = 1;
                             _postModel.numLikes++;
                           }
                         });
@@ -123,7 +136,7 @@ class PostItemState extends State<PostItem> {
                       style: TextStyle(
                         color: likeState == 1
                             ? Colors.orange
-                            : (likeState == 0 ? Colors.grey : Colors.red),
+                            : (likeState == 0 ? Colors.white : Colors.red),
                         fontSize: 16,
                         fontFamily: 'GoogleSans-Medium',
                         fontWeight: FontWeight.bold,
@@ -132,8 +145,8 @@ class PostItemState extends State<PostItem> {
                     IconButton(
                       //** DisLike Icon */
                       icon: Icon(
-                        Icons.thumb_down_alt_outlined,
-                        color: likeState == 1 ? Colors.red : Colors.black,
+                        Icons.thumb_down,
+                        color: likeState == -1 ? Colors.red : Colors.white,
                       ),
                       onPressed: () {
                         setState(() {
@@ -154,42 +167,69 @@ class PostItemState extends State<PostItem> {
                   ],
                 ),
               ),
-              SizedBox(width: 20,), //** Distance betWeen Comments and ... */
-              TextButton.icon( //** Comments And numComments */
-                icon: Icon(Icons.chat_bubble_outline),
+              SizedBox(
+                width: 40,
+              ), //** Distance betWeen Comments and ... */
+              TextButton.icon(
+                //** Comments And numComments */
+                icon: Icon(
+                  Icons.chat_outlined,
+                  color: Colors.orange,
+                ),
                 label: Text(
                   _postModel.numComments.toString(),
                   style: TextStyle(
                     fontSize: 16,
                     fontFamily: 'GoogleSans-Medium',
                     fontWeight: FontWeight.bold,
+                    color: Colors.orange,
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(context,
-                  MaterialPageRoute(
-                    builder: (context) => Home(), //** INcompelete go to POSTPROP */!!!!!
-                  ),
-                );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          Home(), //** INcompelete go to POSTPROP */!!!!!
+                    ),
+                  );
                 },
               ),
-              SizedBox(width: 30,), //** Distance */
-              TextButton.icon( //** Share  */
-                onPressed: () {}, //** NOTHING */
-                icon: Icon(Icons.share_outlined),
-                label: Text(
-                  'Share',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'GoogleSans-Medium',
-                    fontWeight: FontWeight.bold,
+              SizedBox(
+                width: 40,
+              ), //** Distance */
+              TextButton.icon(
+                  //** Share  */
+                  onPressed: () {}, //** NOTHING */
+                  icon: Icon(
+                    Icons.share_outlined,
+                    color: Colors.white,
                   ),
-                )
-              ),
-              SizedBox(width: 10,), //** Distance */
-              Icon(
-                Icons.favorite,
-                color: Colors.orange,
+                  label: Text(
+                    'Share',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'GoogleSans-Medium',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  )),
+              SizedBox(
+                width: 50,
+              ), //** Distance */
+              IconButton(           
+                icon: Icon(
+                  Icons.favorite_outlined,
+                  color: favorite ? Colors.red : Colors.white,                  
+                ),
+                onPressed: () {
+                  setState(() {
+                    if (favorite)
+                      favorite = false;
+                    else
+                      favorite = true;
+                  });
+                },
               )
             ],
           )

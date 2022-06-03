@@ -19,14 +19,44 @@ class Home extends StatefulWidget {
 class HomeState extends State<Home> {
   List<PostModel> _postList = [
     PostModel(
-      'PornHub',
+      'AP Project',
       'Mehdi',
+      DateTime.parse('2020-01-01'),
       DateTime.now(),
-      DateTime.now(),
-      'Thanks Ta Team And Doc Vahidi',
+      'Yooooo Hooooooooooooooo',
       125,
       120,
       12,
+    ),
+    PostModel(
+      'Xnxx',
+      'Matin',
+      DateTime.parse('2021-01-01'),
+      DateTime.now(),
+      'Hey I am Matin Momeni',
+      200,
+      125,
+      14,
+    ),
+    PostModel(
+      'Xvideos',
+      'Alexis',
+      DateTime.parse('2022-01-01'),
+      DateTime.now(),
+      'Hey I am Matin Momeni',
+      2000,
+      85,
+      18,
+    ),
+    PostModel(
+      'Def',
+      'Matin',
+      DateTime.parse('2021-01-01'),
+      DateTime.now(),
+      'Hey I am Matin Momeni',
+      200,
+      125,
+      14,
     ),
   ];
 

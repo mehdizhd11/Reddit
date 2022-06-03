@@ -86,7 +86,6 @@ class PostItemState extends State<PostItem> {
           ),
           Row(
             //** Optional Keys */
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
                 //** Like , numLikes , DisLike */

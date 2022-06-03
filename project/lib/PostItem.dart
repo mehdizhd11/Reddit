@@ -15,7 +15,7 @@ class PostItemState extends State<PostItem> {
   PostModel _postModel;
   PostItemState(this._postModel);
   int likeState = 0;
-  bool favorite = false;
+  bool collections = false;
 
   @override
   Widget build(BuildContext context) {
@@ -219,15 +219,15 @@ class PostItemState extends State<PostItem> {
               ), //** Distance */
               IconButton(           
                 icon: Icon(
-                  Icons.favorite_outlined,
-                  color: favorite ? Colors.red : Colors.white,                  
+                  Icons.bookmark_add_outlined,
+                  color: collections ? Colors.orange : Colors.white,                  
                 ),
                 onPressed: () {
                   setState(() {
-                    if (favorite)
-                      favorite = false;
+                    if (collections)
+                      collections = false;
                     else
-                      favorite = true;
+                      collections = true;
                   });
                 },
               )

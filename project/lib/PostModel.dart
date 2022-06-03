@@ -89,5 +89,5 @@ class PostModel {
       this._numLikes,
       this._numDisLikes,
       this._numComments,
-      this._comments);
+      /*this._comments*/);
 }

@@ -2,8 +2,6 @@
 //** AP Final Project , 1400-1401 , Dr.Vahidi 
 //** Thanks TA Team 
 
-
-
 import 'package:flutter/material.dart';
 import 'SplashScreen.dart';
 

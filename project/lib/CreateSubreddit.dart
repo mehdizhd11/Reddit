@@ -21,6 +21,17 @@ class CreateSubredditState extends State<CreateSubreddit> {
     return Scaffold(
         appBar: AppBar( //** Back to Settings */
           backgroundColor: Colors.black,
+          title: Center(
+            child: Text(
+              'Subreddit',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'GoogleSans-Medium',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
@@ -52,7 +63,7 @@ class CreateSubredditState extends State<CreateSubreddit> {
                       fontFamily: 'GoogleSans-Medium',
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic),
-                  cursorColor: Colors.black,
+                  cursorColor: Colors.white,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.black,

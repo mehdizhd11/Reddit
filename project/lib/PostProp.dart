@@ -21,17 +21,49 @@ class _PostPropState extends State<PostProp> {
       //** App Bar */
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Center(
-          child: Text(
-            'Post',
+        title: TextField(
+            //** Add Comment */
             style: TextStyle(
-              fontSize: 20,
               color: Colors.white,
+              fontSize: 15,
+              fontFamily: 'GoogleSans-Medium', //** Font */
               fontWeight: FontWeight.bold,
-              fontFamily: 'GoogleSans-Medium',
             ),
+            cursorColor: Colors.white,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.white,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              filled: true,
+              fillColor: Color.fromARGB(255, 32, 28, 28),
+              hintText: 'Add Comment', //** Hint Text 'Add Comment' */
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.orange,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              hintStyle: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                fontFamily: 'GoogleSans-Medium',
+                fontWeight: FontWeight.bold,
+              ),
+              prefixIcon: IconButton(
+                //** Add Icon */
+                icon: Icon(
+                  Icons.add,
+                  color: Colors.orange,
+                ),
+                onPressed: () {},
+              ),
+            ),            
           ),
-        ),
         actions: [
           //** Setting Icon */
           IconButton(

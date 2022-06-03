@@ -92,6 +92,46 @@ class PostModel {
       12,
       10,
     ),
+    CommentModel(
+      'Abolfazl Qas',
+      DateTime.parse('2020-01-01'),
+      DateTime.now(),
+      'شما با من در گروه تماس بگیرید؟',
+      12,
+      10,
+    ),
+    CommentModel(
+      'Abolfazl Qas',
+      DateTime.parse('2020-01-01'),
+      DateTime.now(),
+      'شما با من در گروه تماس بگیرید؟',
+      12,
+      10,
+    ),
+    CommentModel(
+      'Abolfazl Qas',
+      DateTime.parse('2020-01-01'),
+      DateTime.now(),
+      'شما با من در گروه تماس بگیرید؟',
+      12,
+      10,
+    ),
+    CommentModel(
+      'Abolfazl Qas',
+      DateTime.parse('2020-01-01'),
+      DateTime.now(),
+      'شما با من در گروه تماس بگیرید؟',
+      12,
+      10,
+    ),
+    CommentModel(
+      'Abolfazl Qas',
+      DateTime.parse('2020-01-01'),
+      DateTime.now(),
+      'شما با من در گروه تماس بگیرید؟',
+      12,
+      10,
+    ),
   ];
 
   List<CommentModel> get comments => _comments;

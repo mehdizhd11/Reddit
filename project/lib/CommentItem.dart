@@ -19,8 +19,8 @@ class _CommentItemState extends State<CommentItem> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity, //** Set to page */
-      margin: EdgeInsets.all(20),
-      height: 150,
+      margin: EdgeInsets.fromLTRB(40,0,0,10),
+      height: 160,
       decoration: BoxDecoration(
         //** Beautiful :) */
         color: Colors.black,
@@ -28,7 +28,7 @@ class _CommentItemState extends State<CommentItem> {
           color: Colors.orange,
           width: 2,
         ),
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         children: [
@@ -52,11 +52,12 @@ class _CommentItemState extends State<CommentItem> {
                     DateTime.now()
                         .difference(_commentModel.gregorianDate)
                         .inDays
-                        .toString() + '  Days ago',
+                        .toString() +
+                    '  Days ago',
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'GoogleSans-Medium',
-                  fontSize: 10,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
                 ),
@@ -66,7 +67,7 @@ class _CommentItemState extends State<CommentItem> {
           Container(
             //** Text of post */
             width: double.infinity,
-            margin: EdgeInsets.fromLTRB(10,0,0,25),
+            margin: EdgeInsets.fromLTRB(10, 0, 0, 25),
             child: Text(
               _commentModel.text,
               style: TextStyle(
@@ -97,7 +98,7 @@ class _CommentItemState extends State<CommentItem> {
                         //** Like Icon */
                         icon: Icon(
                           Icons.thumb_up,
-                          color: likeState == 1 ? Colors.orange : Colors.black,
+                          color: likeState == 1 ? Colors.orange : Colors.white,
                         ),
                         onPressed: () {
                           setState(() {
@@ -121,7 +122,7 @@ class _CommentItemState extends State<CommentItem> {
                         style: TextStyle(
                           color: likeState == 1
                               ? Colors.orange
-                              : (likeState == 0 ? Colors.grey : Colors.red),
+                              : (likeState == 0 ? Colors.white : Colors.red),
                           fontSize: 16,
                           fontFamily: 'GoogleSans-Medium',
                           fontWeight: FontWeight.bold,
@@ -131,7 +132,7 @@ class _CommentItemState extends State<CommentItem> {
                         //** DisLike Icon */
                         icon: Icon(
                           Icons.thumb_down,
-                          color: likeState == 1 ? Colors.red : Colors.white,
+                          color: likeState == -1 ? Colors.red : Colors.white,
                         ),
                         onPressed: () {
                           setState(() {
@@ -168,12 +169,12 @@ class _CommentItemState extends State<CommentItem> {
                       fontSize: 16,
                       fontFamily: 'GoogleSans-Medium',
                       fontWeight: FontWeight.bold,
-                    ),                  
+                    ),
                   ),
                   onPressed: () {},
                 ),
                 SizedBox(
-                  width:  40,
+                  width: 40,
                 ),
                 Icon(
                   Icons.report,
@@ -182,11 +183,11 @@ class _CommentItemState extends State<CommentItem> {
                 SizedBox(
                   width: 50,
                 ),
-                IconButton(  
-                  //** _Collections */         
+                IconButton(
+                  //** _Collections */
                   icon: Icon(
                     Icons.bookmark_add_outlined,
-                    color: _collections ? Colors.orange : Colors.white,                  
+                    color: _collections ? Colors.orange : Colors.white,
                   ),
                   onPressed: () {
                     setState(() {
@@ -197,8 +198,7 @@ class _CommentItemState extends State<CommentItem> {
                     });
                   },
                 ),
-              ]
-            )
+              ])
         ],
       ),
     );

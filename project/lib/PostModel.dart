@@ -67,7 +67,32 @@ class PostModel {
     _numComments = numComments;
   }
 
-  List<CommentModel> _comments = [];
+  List<CommentModel> _comments = [
+    CommentModel(
+      'Mehdi Avara',
+      DateTime.parse('2020-01-01'),
+      DateTime.now(),
+      'شما با من در گروه تماس بگیرید؟',
+      12,
+      10,
+    ),
+    CommentModel(
+      'Ali Taba',
+      DateTime.parse('2020-01-01'),
+      DateTime.now(),
+      'شما با من در گروه تماس بگیرید؟',
+      12,
+      10,
+    ),
+    CommentModel(
+      'Abolfazl Qas',
+      DateTime.parse('2020-01-01'),
+      DateTime.now(),
+      'شما با من در گروه تماس بگیرید؟',
+      12,
+      10,
+    ),
+  ];
 
   List<CommentModel> get comments => _comments;
 

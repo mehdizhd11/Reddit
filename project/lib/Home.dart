@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project/AddPost.dart';
+import 'package:project/CommentModel.dart';
 import 'package:project/PostItem.dart';
 import 'package:project/PostModel.dart';
 import 'package:project/Search.dart';
@@ -17,6 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
+  List<CommentModel> _commentList = [];
   List<PostModel> _postList = [
     PostModel(
       'AP Project',

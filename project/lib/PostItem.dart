@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project/Home.dart';
 import 'package:project/PostModel.dart';
+import 'package:project/PostProp.dart';
 
 class PostItem extends StatefulWidget {
   PostModel _postModel;
@@ -191,7 +192,7 @@ class PostItemState extends State<PostItem> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          Home(), //** INcompelete go to POSTPROP */!!!!!
+                          PostProp(_postModel),
                     ),
                   );
                 },

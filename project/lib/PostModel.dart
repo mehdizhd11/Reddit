@@ -70,17 +70,17 @@ class PostModel {
   List<CommentModel> _comments = [
     CommentModel(
       'Mehdi Avara',
-      DateTime.parse('2020-01-01'),
+      DateTime.parse('2019-01-01'),
       DateTime.now(),
-      'شما با من در گروه تماس بگیرید؟',
+      'سلام',
       12,
       10,
     ),
     CommentModel(
       'Ali Taba',
-      DateTime.parse('2020-01-01'),
+      DateTime.parse('2020-01-02'),
       DateTime.now(),
-      'شما با من در گروه تماس بگیرید؟',
+      'محتوای عالی',
       12,
       10,
     ),
@@ -102,9 +102,9 @@ class PostModel {
     ),
     CommentModel(
       'Abolfazl Qas',
-      DateTime.parse('2020-01-01'),
+      DateTime.parse('2020-02-01'),
       DateTime.now(),
-      'شما با من در گروه تماس بگیرید؟',
+      'مفید',
       12,
       10,
     ),

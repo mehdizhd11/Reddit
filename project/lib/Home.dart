@@ -21,7 +21,7 @@ class HomeState extends State<Home> {
   List<CommentModel> _commentList = [];
   List<PostModel> _postList = [
     PostModel(
-      'PornHub',
+      'CE SBU',
       'Mehdi',
       DateTime.parse('2021-01-01'),
       DateTime.now(),
@@ -41,7 +41,7 @@ class HomeState extends State<Home> {
       12,
     ),
     PostModel(
-      'Xnxx',
+      'Gaming',
       'Matin',
       DateTime.parse('2021-01-01'),
       DateTime.now(),
@@ -51,8 +51,8 @@ class HomeState extends State<Home> {
       14,
     ),
     PostModel(
-      'Xvideos',
-      'Alexis',
+      'Movies',
+      'Ali',
       DateTime.parse('2022-01-01'),
       DateTime.now(),
       'Hey I am Matin Momeni',

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project/AddPost.dart';
@@ -17,68 +19,36 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   List<CommentModel> _commentList = [];
-  List<PostModel> _postList = [
-    PostModel(
-      'CE SBU',
-      'Mehdi',
-      DateTime.parse('2021-01-01'),
-      DateTime.now(),
-      'Hoooooo Yaaaaaah!!!!!!!',
-      100,
-      15,
-      85,
-    ),
-    PostModel(
-      'AP Project',
-      'Mehdi',
-      DateTime.parse('2020-01-01'),
-      DateTime.now(),
-      'Yooooo Hooooooooooooooo',
-      125,
-      120,
-      12,
-    ),
-    PostModel(
-      'Gaming',
-      'Matin',
-      DateTime.parse('2021-01-01'),
-      DateTime.now(),
-      'Hey I am Matin Momeni',
-      200,
-      125,
-      14,
-    ),
-    PostModel(
-      'Movies',
-      'Ali',
-      DateTime.parse('2022-01-01'),
-      DateTime.now(),
-      'Hey I am Matin Momeni',
-      2000,
-      85,
-      18,
-    ),
-    PostModel(
-      'Def',
-      'Matin',
-      DateTime.parse('2021-01-01'),
-      DateTime.now(),
-      'Hey I am Matin Momeni',
-      200,
-      125,
-      14,
-    ),
-    PostModel(
-      'Iran',
-      'Raisi',
-      DateTime.parse('2022-02-01'),
-      DateTime.now(),
-      "YOOOO HOOOO HOOOOO",
-      225,
-      124,
-      178,
-    )
-  ];
+  List<PostModel> _postList = [];
+  Future<void> requestData() async {
+    String response = "feed\u0000";
+    await Socket.connect("192.168.43.147", 8000).then((serverSocket) {
+      serverSocket.write(response);
+      serverSocket.flush();
+      serverSocket.listen((data) {
+        String dataString = String.fromCharCodes(data);
+        List<String> dataList = dataString.split("\n");
+        if (dataList[0] == "success") {
+          _postList.clear();
+          for (int i = 1; i < dataList.length; i++) {
+            List<String> postData = dataList[i].split("&&");
+            _postList.add(
+              PostModel(
+                postData[0],
+                postData[1],
+                DateTime.parse(postData[2]),
+                DateTime.now(),
+                postData[3],
+                int.parse(postData[4]),
+                int.parse(postData[5]),
+                int.parse(postData[6]),
+              ),
+            );
+          }
+        }
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -216,14 +186,29 @@ class HomeState extends State<Home> {
         //** End the Bottom Navi...*/
         //**********************************************************/
         //** List of Posts */
-        body: ListView.builder(
-          itemCount: _postList.length,
-          itemBuilder: (context, index) {
-            return PostItem(_postList[index]);
+        body: FutureBuilder(
+          future: Future.delayed(Duration(seconds: 1), () {
+            requestData();
+            return _postList;
+          }),
+          builder: (context, snapshot) {
+            try {
+              requestData();
+              return ListView.builder(
+                itemCount: _postList.length,
+                itemBuilder: (context, index) {
+                  return PostItem(_postList[index]);
+                },
+              );
+            } catch (e) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
           },
         )
         //** End the List of Posts */
         //************************************** */
-    );
+        );
   }
 }

@@ -191,6 +191,7 @@ class SignInState extends State<SignIn> {
       serverSocket.listen((data) {
         String dataString = String.fromCharCodes(data);
         if (dataString == "success") {
+          widget._log = "";
           Navigator.push(
             context,
             MaterialPageRoute(

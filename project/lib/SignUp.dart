@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/Globals.dart';
 import 'Home.dart';
 import 'UserIdentity.dart';
 
@@ -184,8 +185,8 @@ class SignUpState extends State<SignUp> {
                         widget._log = "Please fill all the fields";
                       });
                     } else {
-                      signUp(context, widget._username.text, widget._password.text,
-                          widget._email.text);
+                      signUp(context, widget._username.text,
+                          widget._password.text, widget._email.text);
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -233,6 +234,7 @@ class SignUpState extends State<SignUp> {
         String dataString = String.fromCharCodes(data);
         if (dataString == "success") {
           widget._log = "";
+          user_name = username;
           Navigator.push(
             context,
             MaterialPageRoute(

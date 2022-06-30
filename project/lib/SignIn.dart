@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/Globals.dart';
 import 'package:project/UserIdentity.dart';
 import 'Home.dart';
 
@@ -192,6 +193,7 @@ class SignInState extends State<SignIn> {
         String dataString = String.fromCharCodes(data);
         if (dataString == "success") {
           widget._log = "";
+          user_name = username;
           Navigator.push(
             context,
             MaterialPageRoute(

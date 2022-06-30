@@ -1,11 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project/Globals.dart';
 import 'package:project/Home.dart';
+import 'package:intl/intl.dart';
 
 import 'Search.dart';
 
 class AddPost extends StatefulWidget {
   AddPost({Key? key}) : super(key: key);
+  final TextEditingController _postText = TextEditingController(text: "");
+  final TextEditingController _subRedditName = TextEditingController(text: "");
 
   @override
   State<StatefulWidget> createState() => AddPostState();
@@ -28,11 +34,7 @@ class AddPostState extends State<AddPost> {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Home(),
-                  ));
+              addPost(context, widget._postText.text, widget._subRedditName.text);
             },
           )
         ],
@@ -66,6 +68,7 @@ class AddPostState extends State<AddPost> {
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic),
                 cursorColor: Colors.black,
+                controller: widget._subRedditName,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.black,
@@ -79,7 +82,7 @@ class AddPostState extends State<AddPost> {
                       color: Colors.orange,
                     ),
                   ),
-                  hintText: 'An intresting title',
+                  hintText: 'Subreddit Name',
                   hintStyle: TextStyle(
                     color: Colors.grey,
                     fontSize: 20,
@@ -109,6 +112,7 @@ class AddPostState extends State<AddPost> {
                   fontStyle: FontStyle.italic,
                 ),
                 cursorColor: Colors.white,
+                controller: widget._postText,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.black,
@@ -129,7 +133,7 @@ class AddPostState extends State<AddPost> {
                     fontFamily: 'GoogleSans-Medium',
                   ),
                   contentPadding: EdgeInsets.all(20),
-                  hintTextDirection: TextDirection.ltr,
+                  //hintTextDirection: TextDirection.ltr,
                 ),
               ),
             ), //** End the Discription */
@@ -216,5 +220,20 @@ class AddPostState extends State<AddPost> {
         ],
       ),
     );
+  }
+  addPost(BuildContext context, String postText,String subRedditName) async {
+    String date = DateFormat("yyyy-MM-dd").format(DateTime.now());
+    String response = "addPost&&$user_name&&$postText&&$subRedditName&&$date\u0000";
+    await Socket.connect("192.168.43.147", 8000).then((serverSocket) {
+      serverSocket.write(response);
+      serverSocket.flush();
+      serverSocket.listen((data) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+          builder: (context) => Home(),
+          ));
+      });
+    });
   }
 }

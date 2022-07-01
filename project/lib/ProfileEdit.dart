@@ -1,8 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:project/Globals.dart';
 import 'package:project/Profile.dart';
 
 class ProfileEdit extends StatefulWidget {
   ProfileEdit({Key? key}) : super(key: key);
+  final TextEditingController _username = TextEditingController(text: "");
+  final TextEditingController _password = TextEditingController(text: "");
+  final TextEditingController _email = TextEditingController(text: "");
+  String _log = "";
 
   @override
   State<ProfileEdit> createState() => _ProfileEditState();
@@ -42,12 +49,16 @@ class _ProfileEditState extends State<ProfileEdit> {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Profile(),
-                ),
-              );
+              if (widget._email.text.isEmpty ||
+                  widget._password.text.isEmpty ||
+                  widget._username.text.isEmpty) {
+                setState(() {
+                  widget._log = "Please fill all the fields";
+                });
+                } else {
+                  editProfile(context, widget._username.text, widget._password.text,
+                      widget._email.text);
+              }
             },
           )
         ],
@@ -79,6 +90,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                 ),
                 // textAlign: TextAlign.center,
                 cursorColor: Colors.black,
+                controller: widget._email,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.orange,
@@ -112,6 +124,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                 ),
                 // textAlign: TextAlign.center,
                 cursorColor: Colors.black,
+                controller: widget._username,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.orange,
@@ -146,6 +159,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                 ),
                 // textAlign: TextAlign.center,
                 cursorColor: Colors.black,
+                controller: widget._password,
                 decoration: InputDecoration(
                   suffixIcon: Container(
                     margin: EdgeInsets.only(right: 20),
@@ -181,9 +195,47 @@ class _ProfileEditState extends State<ProfileEdit> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              widget._log,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 15,
+                fontFamily: 'GoogleSans-Medium',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
     );
+  }
+  editProfile(BuildContext context, String username, String password,
+      String email) async {
+    String response = "editProfile&&$user_name&&$username&&$password&&$email\u0000";
+    print(response);
+    await Socket.connect("192.168.43.147", 8000).then((serverSocket) {
+      serverSocket.write(response);
+      serverSocket.flush();
+      serverSocket.listen((data) {
+        String dataString = String.fromCharCodes(data);
+        if(dataString == "success"){
+          user_name = username;
+          widget._log = "";
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Profile(),
+            ),
+          );
+        } else {
+          setState(() {
+            widget._log = dataString;
+          });
+        }
+      });
+    });
   }
 }

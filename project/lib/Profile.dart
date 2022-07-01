@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/Globals.dart';
 import 'package:project/ProfileEdit.dart';
 
 class Profile extends StatefulWidget {
@@ -74,7 +75,7 @@ class _ProfileState extends State<Profile> {
                         height: 75,
                       ),
                       Text(
-                        'UserName : Mehdi Momeni',
+                        'UserName :' + user_name,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,

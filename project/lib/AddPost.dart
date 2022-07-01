@@ -231,8 +231,9 @@ class AddPostState extends State<AddPost> {
         Navigator.push(
           context,
           MaterialPageRoute(
-          builder: (context) => Home(),
-          ));
+            builder: (context) => Home(),
+          )
+        );
       });
     });
   }

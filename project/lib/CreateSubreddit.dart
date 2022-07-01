@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:project/Settings.dart';
 import 'Home.dart';
@@ -14,6 +16,7 @@ class CreateSubreddit extends StatefulWidget {
 
 class CreateSubredditState extends State<CreateSubreddit> {
   String _dropDownValue = 'Type';
+  final TextEditingController _subRedditName = TextEditingController(text: "");
   
   @override
   Widget build(BuildContext context) {
@@ -63,6 +66,7 @@ class CreateSubredditState extends State<CreateSubreddit> {
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic),
                   cursorColor: Colors.white,
+                  controller: _subRedditName,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.black,
@@ -145,11 +149,7 @@ class CreateSubredditState extends State<CreateSubreddit> {
                 margin: EdgeInsets.fromLTRB(50, 95, 50, 0),                
                 child: ElevatedButton(
                   onPressed: () { //** Go to Home Page */
-                    Navigator.push(context,
-                      MaterialPageRoute(
-                        builder: (context) => Home(),
-                      ),
-                    );
+                    addSubReddit(context, _subRedditName.text, _dropDownValue);
                   },
                   style: ElevatedButton.styleFrom(
                     fixedSize: const Size(180, 50),
@@ -172,5 +172,19 @@ class CreateSubredditState extends State<CreateSubreddit> {
             ],
           ),
         ));
+  }
+  addSubReddit(BuildContext context, String subRedditName, String subRedditType) async {
+    String response = "addSubReddit&&$subRedditName&&$subRedditType\u0000";
+    await Socket.connect("192.168.43.147", 8000).then((serverSocket) {
+      serverSocket.write(response);
+      serverSocket.flush();
+      serverSocket.listen((data) {
+        Navigator.push(context,
+          MaterialPageRoute(
+            builder: (context) => Home(),
+          ),
+        );
+      });
+    });
   }
 }

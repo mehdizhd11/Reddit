@@ -11,7 +11,6 @@ import 'Search.dart';
 class AddPost extends StatefulWidget {
   AddPost({Key? key}) : super(key: key);
   final TextEditingController _postText = TextEditingController(text: "");
-  final TextEditingController _subRedditName = TextEditingController(text: "");
 
   @override
   State<StatefulWidget> createState() => AddPostState();
@@ -31,7 +30,7 @@ class AddPostState extends State<AddPost> {
         if (dataList[0] == "success") {
           _subRedditList.clear();
           for (int i = 1; i < dataList.length; i++) {
-            _subRedditList.add(dataList[i]);
+            _subRedditList.add(dataList[i].split("&&")[0]);
           }
         }
       });
@@ -54,7 +53,8 @@ class AddPostState extends State<AddPost> {
               color: Colors.white,
             ),
             onPressed: () {
-              addPost(context, widget._postText.text, widget._subRedditName.text);
+              addPost(
+                  context, widget._postText.text, _dropDownValue);
             },
           )
         ],
@@ -75,59 +75,75 @@ class AddPostState extends State<AddPost> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              //** Subreddit Type */
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.all(20),
-              child: DropdownButton<String>(
-                borderRadius: BorderRadius.circular(10),
-                dropdownColor: Colors.black,
-                hint: _dropDownValue == 'subReddit'
-                    ? Text('subReddit',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 20,
-                          fontFamily: 'GoogleSans-Medium',
-                          fontWeight: FontWeight.bold,
-                        ))
-                    : Text(
-                        _dropDownValue,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontFamily: 'GoogleSans-Medium',
-                          fontWeight: FontWeight.bold,
-                        ),
+            FutureBuilder(
+              future: Future.delayed(Duration(seconds: 1), () {
+                requestData();
+                return _subRedditList;
+              }),
+              builder: (context, snapshot) {
+                try {
+                  requestData();
+                  return Container(
+                    //** Subreddit Type */
+                    alignment: Alignment.centerLeft,
+                    margin: EdgeInsets.all(20),
+                    child: DropdownButton<String>(
+                      borderRadius: BorderRadius.circular(10),
+                      dropdownColor: Colors.black,
+                      hint: _dropDownValue == 'subReddit'
+                          ? Text('subReddit',
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 20,
+                                fontFamily: 'GoogleSans-Medium',
+                                fontWeight: FontWeight.bold,
+                              ))
+                          : Text(
+                              _dropDownValue,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontFamily: 'GoogleSans-Medium',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                      iconSize: 24,
+                      elevation: 16,
+                      underline: Container(
+                        height: 2,
+                        color: Colors.orange,
                       ),
-                iconSize: 24,
-                elevation: 16,
-                underline: Container(
-                  height: 2,
-                  color: Colors.orange,
-                ),
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 20,
-                  fontFamily: 'GoogleSans-Medium',
-                  fontWeight: FontWeight.bold,
-                ),
-                items: _subRedditList.map(
-                  (val) {
-                    return DropdownMenuItem<String>(
-                      value: val,
-                      child: Text(val),
-                    );
-                  },
-                ).toList(),
-                onChanged: (val) {
-                  setState(
-                    () {
-                      _dropDownValue = val!;
-                    },
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                        fontFamily: 'GoogleSans-Medium',
+                        fontWeight: FontWeight.bold,
+                      ),
+                      items: _subRedditList.map(
+                        (val) {
+                          return DropdownMenuItem<String>(
+                            value: val,
+                            child: Text(val),
+                          );
+                        },
+                      ).toList(),
+                      onChanged: (val) {
+                        setState(
+                          () {
+                            _dropDownValue = val!;
+                          },
+                        );
+                      },
+                    ),
                   );
-                },
-              ),
+                } catch (e) {
+                  return Container(
+                    child: Text('Loading...'),
+                  );
+                }
+              },
             ),
+
             //** End the Title */
             //****************************************/
             //**** Description */
@@ -256,19 +272,21 @@ class AddPostState extends State<AddPost> {
       ),
     );
   }
-  addPost(BuildContext context, String postText,String subRedditName) async {
+
+  addPost(BuildContext context, String postText, String subRedditName) async {
     String date = DateFormat("yyyy-MM-dd").format(DateTime.now());
-    String response = "addPost&&$user_name&&$postText&&$subRedditName&&$date\u0000";
+    print(subRedditName);
+    String response =
+        "addPost&&$user_name&&$postText&&$subRedditName&&$date\u0000";
     await Socket.connect("192.168.43.147", 8000).then((serverSocket) {
       serverSocket.write(response);
       serverSocket.flush();
       serverSocket.listen((data) {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Home(),
-          )
-        );
+            context,
+            MaterialPageRoute(
+              builder: (context) => Home(),
+            ));
       });
     });
   }

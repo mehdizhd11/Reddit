@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project/AddPost.dart';
@@ -13,6 +15,26 @@ class Search extends StatefulWidget {
 }
 
 class SearchState extends State<Search> {
+  List<String> _subRedditList = [];
+
+  Future<void> requestData() async {
+    String response = "getSubReddit\u0000";
+    await Socket.connect("192.168.43.147", 8000).then((serverSocket) {
+      serverSocket.write(response);
+      serverSocket.flush();
+      serverSocket.listen((data) {
+        String dataString = String.fromCharCodes(data);
+        List<String> dataList = dataString.split("\n");
+        if (dataList[0] == "success") {
+          _subRedditList.clear();
+          for (int i = 1; i < dataList.length; i++) {
+            _subRedditList.add(dataList[i].split("&&")[0]);
+          }
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,6 +176,38 @@ class SearchState extends State<Search> {
           ),
         ],
       ),
+      body: FutureBuilder(
+        future: Future.delayed(Duration(seconds: 1), () {
+          requestData();
+          return _subRedditList;
+        }),
+        builder: (context, snapshot) {
+          try {
+            requestData();
+            return ListView.builder(
+              itemCount: _subRedditList.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(
+                    _subRedditList[index],
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontFamily: 'GoogleSans-Medium',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  onTap: () {},
+                );
+              },
+            );
+          } catch (e) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      )
     );
   }
 }

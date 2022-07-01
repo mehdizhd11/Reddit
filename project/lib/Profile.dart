@@ -134,7 +134,7 @@ class _ProfileState extends State<Profile> {
             ),
             Center(
               child: Image.asset(
-                "assets/images/ph.jpg", //** =))))) */
+                "assets/images/ph.gif", //** =))))) */
                 width: 300,
                 height: 300,
               ),

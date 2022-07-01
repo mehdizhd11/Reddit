@@ -18,6 +18,26 @@ class AddPost extends StatefulWidget {
 }
 
 class AddPostState extends State<AddPost> {
+  String _dropDownValue = 'subReddit';
+  List<String> _subRedditList = [];
+  Future<void> requestData() async {
+    String response = "getSubReddit\u0000";
+    await Socket.connect("192.168.43.147", 8000).then((serverSocket) {
+      serverSocket.write(response);
+      serverSocket.flush();
+      serverSocket.listen((data) {
+        String dataString = String.fromCharCodes(data);
+        List<String> dataList = dataString.split("\n");
+        if (dataList[0] == "success") {
+          _subRedditList.clear();
+          for (int i = 1; i < dataList.length; i++) {
+            _subRedditList.add(dataList[i]);
+          }
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,41 +76,56 @@ class AddPostState extends State<AddPost> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              //** Title */
-              width: double.infinity,
-              margin: EdgeInsets.all(10),
-              child: TextField(
-                autofocus: true,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontFamily: 'GoogleSans-Medium',
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic),
-                cursorColor: Colors.black,
-                controller: widget._subRedditName,
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.black,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.orange,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.orange,
-                    ),
-                  ),
-                  hintText: 'Subreddit Name',
-                  hintStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 20,
-                    fontFamily: 'GoogleSans-Medium',
-                    fontWeight: FontWeight.bold,
-                  ),
-                  contentPadding: EdgeInsets.all(20),
+              //** Subreddit Type */
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.all(20),
+              child: DropdownButton<String>(
+                borderRadius: BorderRadius.circular(10),
+                dropdownColor: Colors.black,
+                hint: _dropDownValue == 'subReddit'
+                    ? Text('subReddit',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 20,
+                          fontFamily: 'GoogleSans-Medium',
+                          fontWeight: FontWeight.bold,
+                        ))
+                    : Text(
+                        _dropDownValue,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontFamily: 'GoogleSans-Medium',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                iconSize: 24,
+                elevation: 16,
+                underline: Container(
+                  height: 2,
+                  color: Colors.orange,
                 ),
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 20,
+                  fontFamily: 'GoogleSans-Medium',
+                  fontWeight: FontWeight.bold,
+                ),
+                items: _subRedditList.map(
+                  (val) {
+                    return DropdownMenuItem<String>(
+                      value: val,
+                      child: Text(val),
+                    );
+                  },
+                ).toList(),
+                onChanged: (val) {
+                  setState(
+                    () {
+                      _dropDownValue = val!;
+                    },
+                  );
+                },
               ),
             ),
             //** End the Title */
